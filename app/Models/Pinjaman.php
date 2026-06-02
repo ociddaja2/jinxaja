@@ -2,26 +2,45 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Pinjaman extends Model
+class Peminjaman extends Model
 {
-    protected $table = 'pinjamans';
-    
+    use HasFactory;
+
+    /**
+     * The table associated with the model.
+     */
+    protected $table = 'peminjamans';
+
+    /**
+     * The attributes that are mass assignable.
+     */
     protected $fillable = [
-        'book_id',
-        'member_id',
-        'borrow_date',
-        'return_date',
+        'user_id',
+        'alat_id',
+        'tanggal_pinjam',
+        'tanggal_kembali_rencana',
+        'tanggal_kembali_realisasi',
+        'status',
+        'catatan',
     ];
 
-    public function book()
+    /**
+     * Get the user that owns the peminjaman.
+     */
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Book::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function member()
+    /**
+     * Get the alat that is being borrowed.
+     */
+    public function alat(): BelongsTo
     {
-        return $this->belongsTo(Member::class);
+        return $this->belongsTo(Alat::class);
     }
 }
