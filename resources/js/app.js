@@ -1,4 +1,7 @@
-//
-let x = 'hello world';
 
-document.getElementById('app').innerHTML = `<h1>${x}</h1>`;
+
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();

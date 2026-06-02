@@ -8,7 +8,7 @@ use App\Http\Controllers\User\PeminjamanController as UserPeminjamanController;
 
 // Home route
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->route('');
 });
 
 // Authentication routes (assuming Laravel Breeze or similar is installed)
